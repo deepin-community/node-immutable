@@ -1,0 +1,4 @@
+source-is-missing *debian/tests/test_modules/testcheck/dist/testcheck.js*
+very-long-line-length-in-source-file *debian/tests/test_modules/testcheck/dist/testcheck.js*
+very-long-line-length-in-source-file *resources/identity.ai*
+very-long-line-length-in-source-file *website/src/StarBtn.tsx*

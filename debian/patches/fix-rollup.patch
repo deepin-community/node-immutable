@@ -1,0 +1,85 @@
+Description: update rollup
+Author: Yadd <yadd@debian.org>
+Forwarded: no
+Last-Update: 2021-11-09
+
+--- a/resources/jestPreprocessor.js
++++ b/resources/jestPreprocessor.js
+@@ -19,16 +19,16 @@
+   // while https://github.com/facebook/jest/issues/9504 is not resolved
+   const fn = makeSynchronous(async path => {
+     const rollup = require('rollup');
+-    const buble = require('rollup-plugin-buble');
+-    const commonjs = require('rollup-plugin-commonjs');
+-    const json = require('rollup-plugin-json');
+-    const stripBanner = require('rollup-plugin-strip-banner');
++    const buble = require('@rollup/plugin-buble');
++    const commonjs = require('@rollup/plugin-commonjs');
++    const json = require('@rollup/plugin-json');
++    //const stripBanner = require('@rollup/plugin-strip-banner');
+ 
+     // same input options as in rollup-config.js
+     const inputOptions = {
+       input: path,
+       onwarn: () => {},
+-      plugins: [commonjs(), json(), stripBanner(), buble()],
++      plugins: [commonjs(), json(), buble()],
+     };
+ 
+     const bundle = await rollup.rollup(inputOptions);
+--- a/resources/rollup-config-es.js
++++ b/resources/rollup-config-es.js
+@@ -1,8 +1,7 @@
+ import path from 'path';
+-import buble from 'rollup-plugin-buble';
+-import commonjs from 'rollup-plugin-commonjs';
+-import json from 'rollup-plugin-json';
+-import stripBanner from 'rollup-plugin-strip-banner';
++import buble from '@rollup/plugin-buble';
++import commonjs from '@rollup/plugin-commonjs';
++import json from '@rollup/plugin-json';
+ 
+ import copyright from './copyright';
+ 
+@@ -18,5 +17,5 @@
+     format: 'es',
+     sourcemap: false,
+   },
+-  plugins: [commonjs(), json(), stripBanner(), buble()],
++  plugins: [commonjs(), json(), buble()],
+ };
+--- a/resources/rollup-config.js
++++ b/resources/rollup-config.js
+@@ -1,11 +1,11 @@
+ import fs from 'fs';
+ import path from 'path';
+ import { minify } from 'uglify-js';
+-import buble from 'rollup-plugin-buble';
+-import commonjs from 'rollup-plugin-commonjs';
+-import json from 'rollup-plugin-json';
+-import saveLicense from 'uglify-save-license';
+-import stripBanner from 'rollup-plugin-strip-banner';
++import buble from '@rollup/plugin-buble';
++import commonjs from '@rollup/plugin-commonjs';
++import json from '@rollup/plugin-json';
++//import saveLicense from 'uglify-save-license';
++//import stripBanner from 'rollup-plugin-strip-banner';
+ 
+ import copyright from './copyright';
+ 
+@@ -18,7 +18,7 @@
+     async renderChunk(code) {
+       const result = minify(code, {
+         mangle: { toplevel: true },
+-        output: { max_line_len: 2048, comments: saveLicense },
++        output: { max_line_len: 2048 },
+         compress: { comparisons: true, pure_getters: true, unsafe: true },
+       });
+ 
+@@ -47,5 +47,5 @@
+     sourcemap: false,
+     plugins: [uglify()],
+   },
+-  plugins: [commonjs(), json(), stripBanner(), buble()],
++  plugins: [commonjs(), json(), buble()],
+ };

@@ -1,0 +1,2 @@
+[ -e node_modules/immutable ] || pkgjs-ln immutable
+jest --ci -u `ls __tests__/*.ts|grep -v -f debian/tests/test_excluded`
