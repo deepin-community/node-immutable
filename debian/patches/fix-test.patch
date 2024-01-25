@@ -1,0 +1,44 @@
+Description: fix test using ts-jest instead of custom transformer
+Author: Yadd <yadd@debian.org>
+Bug-Debian: https://bugs.debian.org/1008514
+Forwarded: not-needed
+Last-Update: 2022-03-28
+
+--- /dev/null
++++ b/babel.config.js
+@@ -0,0 +1,6 @@
++module.exports = {
++  "presets": [
++    ["@babel/preset-env", {"targets": {"node": "current"}}],
++    "@babel/preset-typescript"
++  ]
++}
+--- a/jest.config.js
++++ b/jest.config.js
+@@ -1,10 +1,11 @@
+ module.exports = {
++  preset: "ts-jest",
+   testRunner: 'jest-jasmine2', // See https://jestjs.io/blog/2021/05/25/jest-27#flipping-defaults as `jasmine-check` uses jasmine and not `jest-circus`
+   moduleFileExtensions: ['js', 'ts'],
+-  resolver: '<rootDir>/resources/jestResolver.js',
+-  transform: {
+-    '^.+\\.(js|ts)$': '<rootDir>/resources/jestPreprocessor.js',
+-  },
++  //resolver: '<rootDir>/resources/jestResolver.js',
++  //transform: {
++  //  '^.+\\.(js|ts)$': '<rootDir>/resources/jestPreprocessor.js',
++  //},
+   testRegex: '/__tests__/.*\\.(ts|js)$',
+   unmockedModulePathPatterns: ['./node_modules/react'],
+ };
+--- a/package.json
++++ b/package.json
+@@ -72,7 +72,7 @@
+     "build:copy": "cpy ./type-definitions/immutable.* dist",
+     "build:prepare": "./resources/prepare-dist.sh",
+     "build:stats": "node ./resources/dist-stats.js",
+-    "unit-test": "jest",
++    "unit-test": "jest --ci __tests__/Range.ts",
+     "website:build": "cd website && next build && next-sitemap && next export",
+     "website:dev": "cd website && next dev",
+     "check-git-clean": "./resources/check-git-clean.sh",

@@ -1,0 +1,72 @@
+Description: fix for rollup 3
+Author: Yadd <yadd@debian.org>
+Bug-Debian: https://bugs.debian.org/1022638
+Forwarded: not-needed
+Last-Update: 2022-10-26
+
+--- a/resources/copyright.js
++++ b/resources/copyright.js
+@@ -1,6 +1,6 @@
+-import fs from 'fs';
++const fs = require('fs');
+ 
+ const copyright = fs.readFileSync('./LICENSE', 'utf-8');
+ const lines = copyright.trim().split('\n');
+ 
+-export default `/**\n${lines.map(line => ` * ${line}`).join('\n')}\n */`;
++module.exports = `/**\n${lines.map(line => ` * ${line}`).join('\n')}\n */`;
+--- a/resources/rollup-config-es.js
++++ b/resources/rollup-config-es.js
+@@ -1,14 +1,14 @@
+-import path from 'path';
+-import buble from '@rollup/plugin-buble';
+-import commonjs from '@rollup/plugin-commonjs';
+-import json from '@rollup/plugin-json';
++const path = require('path');
++const buble = require('@rollup/plugin-buble');
++const commonjs = require('@rollup/plugin-commonjs');
++const json = require('@rollup/plugin-json');
+ 
+-import copyright from './copyright';
++const copyright = require('./copyright');
+ 
+ const SRC_DIR = path.resolve('src');
+ const DIST_DIR = path.resolve('dist');
+ 
+-export default {
++module.exports = {
+   input: path.join(SRC_DIR, 'Immutable.js'),
+   output: {
+     banner: copyright,
+--- a/resources/rollup-config.js
++++ b/resources/rollup-config.js
+@@ -1,13 +1,13 @@
+-import fs from 'fs';
+-import path from 'path';
+-import { minify } from 'uglify-js';
+-import buble from '@rollup/plugin-buble';
+-import commonjs from '@rollup/plugin-commonjs';
+-import json from '@rollup/plugin-json';
++const fs = require('fs');
++const path = require('path');
++const { minify } = require('uglify-js');
++const buble = require('@rollup/plugin-buble');
++const commonjs = require('@rollup/plugin-commonjs');
++const json = require('@rollup/plugin-json');
+ //import saveLicense from 'uglify-save-license';
+ //import stripBanner from 'rollup-plugin-strip-banner';
+ 
+-import copyright from './copyright';
++const copyright = require('./copyright');
+ 
+ const SRC_DIR = path.resolve('src');
+ const DIST_DIR = path.resolve('dist');
+@@ -36,7 +36,7 @@
+   };
+ }
+ 
+-export default {
++module.exports = {
+   input: path.join(SRC_DIR, 'Immutable.js'),
+   output: {
+     banner: copyright,

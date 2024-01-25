@@ -1,5 +1,102 @@
-template-repository (1.0-1) unstable; urgency=medium
+node-immutable (4.3.4-1) unstable; urgency=medium
 
-  * Initial release
+  * Team upload
+  * New upstream version 4.3.4
+  * Update lintian overrides
+  * Bump Standards-Version to 4.6.2 (no changes needed)
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Ananthu C V <weepingclown@disroot.org>  Tue, 10 Oct 2023 21:09:32 +0530
+
+node-immutable (4.1.0-3) unstable; urgency=medium
+
+  * Team upload
+  * Add fix for rollup 3 (Closes: #1022638)
+
+ -- Yadd <yadd@debian.org>  Wed, 26 Oct 2022 15:53:33 +0200
+
+node-immutable (4.1.0-2) unstable; urgency=medium
+
+  * Team upload
+  * Rebuild to drop __proto__ calls
+  * Drop __proto__ calls from test dependencies
+  * Fix nocheck target
+
+ -- Yadd <yadd@debian.org>  Tue, 20 Sep 2022 21:22:46 +0200
+
+node-immutable (4.1.0-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version 4.1.0
+
+ -- Yadd <yadd@debian.org>  Wed, 27 Jul 2022 22:43:18 +0200
+
+node-immutable (4.0.0-4) unstable; urgency=medium
+
+  * Team upload
+  * Declare compliance with policy 4.6.1
+  * Fix test for jest >= 28 (Closes: #1011891)
+
+ -- Yadd <yadd@debian.org>  Wed, 01 Jun 2022 18:45:48 +0200
+
+node-immutable (4.0.0-3) unstable; urgency=medium
+
+  * Team upload
+  * Replace custom jest transformer by ts-jest for test (Closes: #1008514)
+
+ -- Yadd <yadd@debian.org>  Tue, 29 Mar 2022 06:30:21 +0200
+
+node-immutable (4.0.0-2) unstable; urgency=medium
+
+  * Team upload
+  * Don't parallelize tests (Closes: #1002759)
+
+ -- Yadd <yadd@debian.org>  Wed, 29 Dec 2021 11:01:23 +0100
+
+node-immutable (4.0.0-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Debian Janitor ]
+  * Trim trailing whitespace.
+  * Set upstream metadata fields: Bug-Submit.
+  * Remove obsolete fields Contact, Name from debian/upstream/metadata
+    (already present in machine-readable debian/copyright).
+  * Update standards version to 4.5.0, no changes needed.
+  * Apply multi-arch hints.
+    + node-immutable: Add Multi-Arch: foreign.
+
+  [ Yadd ]
+  * Bump debhelper from old 12 to 13.
+  * Update standards version to 4.6.0, no changes needed
+  * Add "Rules-Requires-Root: no"
+  * Fix filenamemangle
+  * Fix GitHub tags regex
+  * Use dh-sequence-nodejs instead of pkg-js-tools
+  * Drop dependency to nodejs
+  * New upstream version 4.0.0
+  * Update copyright
+  * Update build using upstream rollup-config files
+  * Embed jasmine-check, make-synchronous, subsume, testcheck, transducers-js
+    for test only
+  * Enable upstream test using jest
+
+ -- Yadd <yadd@debian.org>  Tue, 09 Nov 2021 11:41:58 +0100
+
+node-immutable (3.8.2+dfsg-3) unstable; urgency=medium
+
+  * Add compatibility link for index.d.ts (Fixes TS7016 error in node-rollup
+    0.56)
+
+ -- Pirate Praveen <praveen@debian.org>  Fri, 27 Sep 2019 15:53:12 +0530
+
+node-immutable (3.8.2+dfsg-2) unstable; urgency=medium
+
+  * Source-only upload for bullseye
+
+ -- Pirate Praveen <praveen@debian.org>  Thu, 26 Sep 2019 12:42:34 +0530
+
+node-immutable (3.8.2+dfsg-1) unstable; urgency=low
+
+  * Initial release (Closes: #930635)
+
+ -- Pirate Praveen <praveen@debian.org>  Tue, 24 Sep 2019 06:49:04 +0200
