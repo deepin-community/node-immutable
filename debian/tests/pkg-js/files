@@ -1,4 +1,5 @@
-debian/tests/test_excluded
+babel.config.js
+debian/tests
 jest.config.js
 resources
 src
