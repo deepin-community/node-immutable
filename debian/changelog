@@ -1,3 +1,21 @@
+node-immutable (4.3.8-2) unstable; urgency=medium
+
+  * Team upload
+  * Fix autopkgtest files
+
+ -- Yadd <yadd@debian.org>  Mon, 09 Mar 2026 08:25:00 +0100
+
+node-immutable (4.3.8-1) unstable; urgency=medium
+
+  * Team upload
+  * Declare compliance with policy 4.7.3
+  * Drop "Rules-Requires-Root: no"
+  * debian/watch version 5
+  * New upstream version (Closes: CVE-2026-29063)
+  * Update patches
+
+ -- Yadd <yadd@debian.org>  Mon, 09 Mar 2026 05:29:19 +0100
+
 node-immutable (4.3.4-1) unstable; urgency=medium
 
   * Team upload

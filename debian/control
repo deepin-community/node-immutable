@@ -17,11 +17,10 @@ Build-Depends:
  , node-uglify-js
  , node-unique-string <!nocheck>
  , ts-jest <!nocheck>
-Standards-Version: 4.6.2
+Standards-Version: 4.7.3
 Homepage: https://facebook.github.com/immutable-js
 Vcs-Git: https://salsa.debian.org/js-team/node-immutable.git
 Vcs-Browser: https://salsa.debian.org/js-team/node-immutable
-Rules-Requires-Root: no
 
 Package: node-immutable
 Architecture: all
